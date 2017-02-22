@@ -12,7 +12,7 @@ let webdriver = require('selenium-webdriver'),
 
 console.log("Inside renderer.js");
 
-function AsgardLogin() {
+module.exports = AsgardLogin = function AsgardLogin() {
     var driver = new webdriver.Builder()
     .forBrowser('chrome')
     .build();
