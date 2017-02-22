@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  </head>
+  <body>
+    <h1>Hello World!</h1>
+    <!-- All of the Node.js APIs are available in this renderer process. -->
+    We are using Node.js <script>document.write(process.versions.node)</script>,
+    Chromium <script>document.write(process.versions.chrome)</script>,
+    and Electron <script>document.write(process.versions.electron)</script>.
+    <div> 
+      <button id="login" onclick="AsgardLogin();" type="button" class="btn btn-primary">Asgard Login</button> 
+
+    </div>
+  </body>
+
+  <script>
+    // You can also require other files to run in this process
+    require('./renderer.js')
+    //require('./login.js')
+    require('chromedriver');
+
+
+    let Config = require('./config.js');
+
+    let webdriver = require('selenium-webdriver'),
+        By = webdriver.By,
+        until = webdriver.until;
+
+    // console.log("Inside renderer.js");
+
+    function AsgardLogin() {
+        var driver = new webdriver.Builder()
+        .forBrowser('chrome')
+        .build();
+
+        driver.get(Config.url);
+        driver.switchTo().frame('innerFrame');
+        driver.findElement(By.name('username')).sendKeys(Config.username);
+        driver.findElement(By.name('password')).sendKeys(Config.password);
+        // driver.findElement(By.className(' form-submit art-button buttonFont')).click();
+        // driver.wait(until.elementIsVisible(driver.findElement({ id: 'footerLinks' })), 5000);
+        // driver.quit();
+        // console.log("in Asgard function");
+}
+    
+  </script>
+</html>
