@@ -38,3 +38,7 @@ For more example apps, see the
 created by the awesome electron community.
 
 #### License [CC0 1.0 (Public Domain)](LICENSE.md)
+
+electron-packager <sourcedir> <appname> --platform=<platform> --arch=<arch> [optional flags...]
+electron-packager ./ ElectronLogin --platform=darwin --arch=x64
+electron-packager ./ ElectronLogin --platform=win32 --arch=ia32
