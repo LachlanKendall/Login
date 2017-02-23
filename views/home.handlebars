@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Lockie Scraper Server</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Uses built-in `if` helper. -->
+    {{#if showTitle}}
+        <h1>Lockie Scraping Server</h1>
+    {{/if}}
+
+        <!-- Calls `foo` helper, overridden at render-level. -->
+        <p>{{foo}}</p>
+
+        <!-- Calls `bar` helper, defined at instance-level. -->
+        <p>{{bar}}</p>
+
+        <div class="jumbotron">
+            <p>Server started running: {{session_start}} </p>
+            <h5>Last scraping run this server session: <span class="alert alert-info">{{last_run}}</span> </h5>
+            {{#if showWarning}}
+                <p class="alert alert-danger">This service has not run since the service started - please check it is not broken</p>
+            {{/if}}
+        </div>
+        {{!--<div class="panel panel-default">
+            <div class="panel-body">
+                <p>Last scraping run this server session: <span class="alert alert-info">{{last_run}}</span> </p>
+                {{#if showWarning}}
+                    <p class="alert alert-danger">This service has not run since the service started - please check it is not broken</p>
+                {{/if}}
+            </div>
+        </div>--}}
+        <div class="container">            
+            <table class="table table-striped">
+                {{!--{{{ratesData}}}--}}
+                <tr>
+                <th>Platform</th>
+                <th>Institution</th>
+                <th>Term (months)</th>
+                <th>Rate %p.a.</th>
+                <th>updated_date</th>
+                <th>updated_user</th>
+                </tr>
+                {{#each ratesData}}
+                <tr>
+                <td>{{this.r_platform_name}} </td>
+                <td>{{this.r_insto}}</td>
+                <td>{{this.r_term_months}}</td>
+                <td>{{this.r_rate}}</td>
+                <td>{{this.r_updated_date}}</td>
+                <td>{{this.r_updated_user}}</td>
+                </tr> 
+                {{/each}}
+            </table>
+        </div>
+    </div>
+</body>
+</html>
