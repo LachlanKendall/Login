@@ -17,6 +17,8 @@ module.exports = AsgardLogin = function AsgardLogin() {
     .forBrowser('chrome')
     .build();
 
+
+
     driver.get(Config.url);
     driver.switchTo().frame('innerFrame');
     driver.findElement(By.name('username')).sendKeys(Config.username);
@@ -24,12 +26,6 @@ module.exports = AsgardLogin = function AsgardLogin() {
     driver.findElement(By.className(' form-submit art-button buttonFont')).click();
     driver.wait(until.elementIsVisible(driver.findElement({ id: 'footerLinks' })), 5000);
     
-    // Find interest rate 
-    // driver.findElement(By.id('searchSelect')).sendKeys('P');
-    // driver.findElement(By.name('searchText')).sendKeys(Config.product);
-    // driver.findElement(By.name('searchClient')).click();
-    // driver.findElement(By.id('Asgard eWRAP Super Account (AEWS) - Transfers')).click();
-
     // Access selected client's PV 
     driver.findElement(By.name('searchText')).sendKeys(Config.account);
     driver.findElement(By.name('searchClient')).click();
@@ -39,7 +35,36 @@ module.exports = AsgardLogin = function AsgardLogin() {
 
     // Move to RoR of client
     driver.findElement(By.id('account_enquiry_menu_select')).sendKeys('R');
+    driver.findElement(By.name('presetDateRange')).sendKeys('12');
+    driver.findElement(By.name('submitAction')).click();
+
 
     // driver.quit();
     console.log("in Asgard function");
+}
+
+module.exports = AsgardRates = function AsgardRates() {
+    var driver = new webdriver.Builder()
+    .forBrowser('chrome')
+    .build();
+
+    driver.get(Config.rates);
+
+
+    console.log("in Asgard rates function");
+}
+
+module.exports = AMMRates = function AMMRates() {
+    var driver = new webdriver.Builder()
+    .forBrowser('chrome')
+    .build();
+
+    driver.get(Config.AMMurl);
+    driver.findElement(By.id('authBtn')).click();
+    driver.findElement(By.name('txtUserID')).sendKeys(Config.AMMUsername);
+    driver.findElement(By.name('txtPassword')).sendKeys(Config.AMMPassword);
+    // driver.findElement(By.id('loginBtn')).click();
+
+
+    console.log("in AMM rates function");
 }

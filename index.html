@@ -8,11 +8,19 @@
   <body>
     <h1>Hello World!</h1>
     <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
+    <p>
     <div> 
       <button id="login" onclick="AsgardLogin();" type="button" class="btn btn-primary">Asgard Login</button> 
+
+    </div>
+    <p>
+    <div> 
+      <button id="rate" onclick="AsgardRates();" type="button" class="btn btn-primary">Asgard Rates look-up</button> 
+      
+    </div>
+    <p>
+    <div> 
+      <button id="AMMrate" onclick="AMMRates();" type="button" class="btn btn-primary">AMM Rates look-up</button> 
 
     </div>
   </body>
